@@ -338,3 +338,14 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+Measure the loudness of a segment (returns a single LUFS-style value):
+
+```python
+from pydub import silence
+
+# returns float in dBFS-style scale; -1.0 means silent throughout
+loudness = silence.detect_loudness(track, window_ms=400)
+```
+
+`detect_loudness` is the recommended helper for picking a sensible
+`silence_thresh` argument for `detect_silence` on unfamiliar inputs.
